@@ -59,6 +59,18 @@
       object-fit: cover;
     }
 
+    .brand .logo {
+      width: 150px;
+      height: 52px;
+      object-fit: contain;
+      object-position: left center;
+      flex: 0 0 auto;
+    }
+
+    .brand > span {
+      display: none;
+    }
+
     .container {
       width: min(1180px, 92%);
       margin: auto;
@@ -391,6 +403,93 @@
       font-size: 13px;
     }
 
+
+    .clickable-card {
+      cursor: pointer;
+    }
+
+    .clickable-card:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .action-button {
+      border: 0;
+      color: white;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .action-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+    }
+
+    .action-modal.show {
+      display: block;
+    }
+
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.65);
+    }
+
+    .modal-card {
+      position: relative;
+      width: min(560px, 92%);
+      max-height: 88vh;
+      overflow: auto;
+      margin: 7vh auto 0;
+      padding: 30px;
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      font-size: 32px;
+      cursor: pointer;
+    }
+
+    .community-form {
+      display: grid;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .community-form label {
+      display: grid;
+      gap: 7px;
+      font-weight: 700;
+    }
+
+    .community-form input,
+    .community-form textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: var(--surface);
+      color: var(--text);
+      font: inherit;
+      resize: vertical;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
     /* MOBILE */
 
     @media (max-width: 850px) {
@@ -447,6 +546,11 @@
         font-size: 20px;
       }
 
+      .brand .logo {
+        width: 125px;
+        height: 46px;
+      }
+
       .hero {
         padding-top: 20px;
       }
@@ -481,9 +585,8 @@
   <header>
     <div class="container nav">
 
-      <a href="#home" class="brand">
-      <img src="izuba%20logo.png.png" alt="Izuba TV" class="logo">
-        <span>IZUBA TV</span>
+      <a href="#home" class="brand" aria-label="Izuba TV Home">
+        <img src="izuba%20logo.png.png" alt="Izuba TV" class="logo">
       </a>
 
       <nav>
@@ -523,7 +626,7 @@
     <section class="hero">
       <div class="container hero-grid">
 
-        <article class="hero-main">
+        <article class="hero-main clickable-card" role="button" tabindex="0" data-action="news">
           <img
             src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1800&q=90"
             alt="News"
@@ -536,7 +639,7 @@
           </div>
         </article>
 
-        <article class="hero-side">
+        <article class="hero-side clickable-card" role="button" tabindex="0" data-action="news">
           <img
             src="https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1000&q=90"
             alt="Latest news"
@@ -557,12 +660,12 @@
 
         <div class="section-head">
           <h2>📰 Latest News</h2>
-          <a class="view-all" href="#video">Reba zose →</a>
+          <a class="view-all" href="#news">Reba zose →</a>
         </div>
 
         <div class="news-grid">
 
-          <article class="card">
+          <article class="card clickable-card" role="button" tabindex="0" data-action="news">
             <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1000&q=90" alt="News">
             <div class="card-body">
               <span class="tag">RWANDA</span>
@@ -571,7 +674,7 @@
             </div>
           </article>
 
-          <article class="card">
+          <article class="card clickable-card" role="button" tabindex="0" data-action="news">
             <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1000&q=90" alt="Sports">
             <div class="card-body">
               <span class="tag">SPORTS</span>
@@ -580,7 +683,7 @@
             </div>
           </article>
 
-          <article class="card">
+          <article class="card clickable-card" role="button" tabindex="0" data-action="news">
             <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=90" alt="Business">
             <div class="card-body">
               <span class="tag">BUSINESS</span>
@@ -659,7 +762,7 @@
 
         <div class="news-grid">
 
-          <article class="card">
+          <article class="card clickable-card" role="button" tabindex="0" data-action="video">
             <div style="height:210px; background:#090d12; display:grid; place-items:center; color:white; font-size:50px;">
               ▶️
             </div>
@@ -669,7 +772,7 @@
             </div>
           </article>
 
-          <article class="card">
+          <article class="card clickable-card" role="button" tabindex="0" data-action="video">
             <div style="height:210px; background:#090d12; display:grid; place-items:center; color:white; font-size:50px;">
               ▶️
             </div>
@@ -679,7 +782,7 @@
             </div>
           </article>
 
-          <article class="card">
+          <article class="card clickable-card" role="button" tabindex="0" data-action="video">
             <div style="height:210px; background:#090d12; display:grid; place-items:center; color:white; font-size:50px;">
               ▶️
             </div>
@@ -711,7 +814,7 @@
 
             <br>
 
-            <a href="#" class="live-button">Ohereza Inkuru</a>
+            <button type="button" class="live-button action-button" data-action="community">Ohereza Inkuru</button>
           </div>
         </div>
 
@@ -723,7 +826,7 @@
 
         <div class="section-head">
           <h2>🎙️ Programs</h2>
-          <a class="view-all" href="#">Reba gahunda →</a>
+          <a class="view-all" href="#programs">Reba gahunda →</a>
         </div>
 
         <div class="card">
@@ -772,7 +875,7 @@
         <h3 id="contact">Contact</h3>
         <a href="#about">About Izuba</a>
         <a href="#contact">Contact</a>
-        <a href="#social" id="social">Social Media</a>
+        <a href="#social" id="social" data-social-link>Social Media</a>
       </div>
 
     </div>
@@ -784,6 +887,101 @@
   </footer>
 
   <script>
+
+    /* Functional interactions */
+    const actionModal = document.createElement("div");
+    actionModal.id = "actionModal";
+    actionModal.className = "action-modal";
+    actionModal.innerHTML = `
+      <div class="modal-backdrop" data-close-modal></div>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" type="button" aria-label="Close" data-close-modal>×</button>
+        <h2 id="modalTitle"></h2>
+        <div id="modalContent"></div>
+      </div>`;
+    document.body.appendChild(actionModal);
+
+    const modalTitle = document.getElementById("modalTitle");
+    const modalContent = document.getElementById("modalContent");
+
+    function closeModal() {
+      actionModal.classList.remove("show");
+      document.body.classList.remove("modal-open");
+    }
+
+    function showModal(title, content) {
+      modalTitle.textContent = title;
+      modalContent.innerHTML = content;
+      actionModal.classList.add("show");
+      document.body.classList.add("modal-open");
+    }
+
+    actionModal.querySelectorAll("[data-close-modal]").forEach(el => {
+      el.addEventListener("click", closeModal);
+    });
+
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") closeModal();
+    });
+
+    function goTo(id) {
+      const target = document.getElementById(id);
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    document.querySelectorAll(".clickable-card").forEach(card => {
+      const open = () => {
+        const action = card.dataset.action;
+        if (action === "news") goTo("news");
+        if (action === "video") goTo("video");
+      };
+      card.addEventListener("click", open);
+      card.addEventListener("keydown", e => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          open();
+        }
+      });
+    });
+
+    document.querySelectorAll('[data-action="community"]').forEach(button => {
+      button.addEventListener("click", () => {
+        showModal("Ohereza Inkuru", `
+          <form id="communityForm" class="community-form">
+            <label>Izina
+              <input name="name" required placeholder="Andika izina ryawe">
+            </label>
+            <label>Inkuru cyangwa ubutumwa
+              <textarea name="message" required rows="6" placeholder="Andika inkuru cyangwa ikibazo..."></textarea>
+            </label>
+            <button class="live-button" type="submit">Ohereza</button>
+            <p class="meta">Iyi form irerekana uko submission izakorwa. Nta server/API yo kohereza ubutumwa yari iri muri code ya mbere.</p>
+          </form>
+        `);
+
+        document.getElementById("communityForm").addEventListener("submit", e => {
+          e.preventDefault();
+          showModal("Byakiriwe", "<p>Ubutumwa bwateguwe neza. Kugira ngo bwoherezwe koko, hakenewe email cyangwa backend endpoint ya Izuba TV.</p>");
+        });
+      });
+    });
+
+
+    document.querySelectorAll("[data-social-link]").forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        showModal("Izuba TV — Social Media", `
+          <p>Shyiramo hano links nyazo za Izuba TV kuri YouTube, Facebook, Instagram n'izindi mbuga nyuma yo kuzemeza.</p>
+        `);
+      });
+    });
+
+    // Make the Radio control clearly usable without inventing a stream URL.
+    const audio = document.querySelector("#radio audio");
+    if (audio) {
+      audio.setAttribute("aria-label", "Izuba Radio audio player");
+    }
+
     function toggleTheme() {
       document.body.classList.toggle("dark");
 
