@@ -1,15 +1,17 @@
 /* Custom CSS Variables (Design Tokens) */
 :root {
-  --primary-color: #0056b3;
+  --primary: #0056b3;
   --spacing-unit: 16px;
+  --card-bg: #ffffff;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Card Component Styling */
-.card {
-  background-color: #ffffff;
+/* Card Component Styling matching index.html */
+.news-card {
+  background-color: var(--card-bg);
   padding: var(--spacing-unit);
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -17,7 +19,7 @@
 
 /* Media Query for Mobile Screens */
 @media (max-width: 768px) {
-  .card {
+  .news-card {
     padding: 12px;
   }
 }
